@@ -83,8 +83,8 @@ const SiteCard = (props: SiteCardProps) => {
           {filteredItems.map((item) => {
             return (
               <ListItem key={item.id} disablePadding>
-                <Typography fontSize={15} variant="body1">
-                  <ListItemText disableTypography>
+                <ListItemText disableTypography>
+                  <Typography fontSize={15} variant="body1" paragraph>
                     {formatArticleTitleForDisplay(item)}
                     <Link
                       href={item.link}
@@ -96,8 +96,8 @@ const SiteCard = (props: SiteCardProps) => {
                     >
                       {item.title}
                     </Link>
-                  </ListItemText>
-                </Typography>
+                  </Typography>
+                </ListItemText>
               </ListItem>
             );
           })}
