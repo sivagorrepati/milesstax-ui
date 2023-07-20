@@ -10,7 +10,7 @@ interface ApiSiteData {
 }
 
 const Dashboard = () => {
-  const [data, setData] = useState(new Map<string, ApiSiteData>());
+  const [data, setData] = useState<Record<string, ApiSiteData>>({});
 
   useEffect(() => {
     function fetchData() {
@@ -30,11 +30,7 @@ const Dashboard = () => {
     <div>
       <Grid container spacing={2} rowSpacing={1}>
         {Object.keys(data).map((key) => {
-          const value = data.get(key);
-
-          if (value === undefined) {
-            return <></>;
-          }
+          const value = data[key];
 
           return (
             <Grid item key={key} xs={4} minWidth={400}>
