@@ -1,16 +1,11 @@
-import { faSun as faSunRegular } from "@fortawesome/free-regular-svg-icons";
-import {
-  faBarsStaggered,
-  faSun as faSunSolid,
-} from "@fortawesome/free-solid-svg-icons";
+import { faBarsStaggered, faSun } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { IconButton, Toolbar, Typography, useTheme } from "@mui/material";
+import { IconButton, Toolbar, Typography } from "@mui/material";
 import AppBar from "@mui/material/AppBar";
 import React from "react";
 import ColorModeContext from "./ColorModeContext";
 
 const Header = () => {
-  const theme = useTheme();
   const colorMode = React.useContext(ColorModeContext);
 
   return (
@@ -32,11 +27,7 @@ const Header = () => {
           onClick={colorMode.toggleColorMode}
           color="inherit"
         >
-          {theme.palette.mode === "dark" ? (
-            <FontAwesomeIcon icon={faSunRegular} />
-          ) : (
-            <FontAwesomeIcon icon={faSunSolid} />
-          )}
+          <FontAwesomeIcon icon={faSun} />
         </IconButton>
       </Toolbar>
     </AppBar>

@@ -1,4 +1,7 @@
+import { faCalendarDay } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
+  Avatar,
   Card,
   CardContent,
   CardHeader,
@@ -18,12 +21,15 @@ interface SiteArticle {
 
 interface SiteCardProps {
   name: string;
+  title: string;
+  link: string;
   displayName: string;
   items: SiteArticle[];
 }
 
 const SiteCard = (props: SiteCardProps) => {
-  const { name, displayName, items } = props;
+  const { name, title, link, items } = props;
+  const today = new Date();
 
   const filteredItems = items
     .sort((left, right) => {
@@ -31,9 +37,47 @@ const SiteCard = (props: SiteCardProps) => {
     })
     .filter((_, index) => index < 10);
 
+  const getLastUpdatedDate = (items: SiteArticle[]) => {
+    let time_suffix = "Not available";
+    if (items && items.length > 0) {
+      time_suffix = new Date(items[0].published).toLocaleString();
+    }
+    return "Last updated at " + time_suffix;
+  };
+
+  const formatArticleTitleForDisplay = (item: SiteArticle) => {
+    const parsed_date = new Date(item.published);
+    if (
+      today.getDate() === parsed_date.getDate() &&
+      today.getMonth() === parsed_date.getMonth() &&
+      today.getFullYear() === parsed_date.getFullYear()
+    ) {
+      return (
+        <>
+          <FontAwesomeIcon icon={faCalendarDay} />
+          &nbsp;
+        </>
+      );
+    }
+    return <></>;
+  };
+
   return (
     <Card key={name} raised className="card">
-      <CardHeader title={displayName} />
+      <Link
+        href={link}
+        target="_blank"
+        underline="none"
+        color="inherit"
+        rel="noreferrer"
+        aria-label={"Link to " + title}
+      >
+        <CardHeader
+          title={title}
+          subheader={getLastUpdatedDate(filteredItems)}
+          avatar={<Avatar alt={title} src={link + "/favicon.ico"} />}
+        />
+      </Link>
       <CardContent>
         <List>
           {filteredItems.map((item) => {
@@ -41,14 +85,15 @@ const SiteCard = (props: SiteCardProps) => {
               <ListItem key={item.id} disablePadding>
                 <ListItemText>
                   <Link
-                    className="link-no-color"
                     href={item.link}
                     target="_blank"
                     underline="hover"
+                    color="inherit"
                     rel="noreferrer"
                     aria-label={name + "-" + item.title}
                   >
-                    <Typography fontSize={16} variant="body1">
+                    <Typography fontSize={15} variant="body1">
+                      {formatArticleTitleForDisplay(item)}
                       {item.title}
                     </Typography>
                   </Link>

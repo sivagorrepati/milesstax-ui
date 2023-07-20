@@ -5,7 +5,7 @@ import Dashboard from "./components/Dashboard";
 import Header from "./components/Header";
 
 export default function App() {
-  const [mode, setMode] = React.useState<"light" | "dark">("light");
+  const [mode, setMode] = React.useState<"light" | "dark">("dark");
   const colorMode = React.useMemo(
     () => ({
       toggleColorMode: () => {

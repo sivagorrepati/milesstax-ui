@@ -27,6 +27,8 @@ const Dashboard = () => {
             <Grid item key={key} xs={4} minWidth={400}>
               <SiteCard
                 name={key}
+                title={value.title}
+                link={value.link}
                 displayName={value.name}
                 items={value.items}
               />
