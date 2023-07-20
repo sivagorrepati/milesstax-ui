@@ -12,7 +12,7 @@ import {
   Typography,
 } from "@mui/material";
 
-interface SiteArticle {
+export interface SiteArticle {
   id: string;
   title: string;
   link: string;

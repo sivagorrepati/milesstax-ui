@@ -1,8 +1,12 @@
 import { CssBaseline, ThemeProvider, createTheme } from "@mui/material";
 import React from "react";
-import ColorModeContext from "./components/ColorModeContext";
 import Dashboard from "./components/Dashboard";
 import Header from "./components/Header";
+
+export const ColorModeContext = React.createContext({
+  // eslint-disable-next-line @typescript-eslint/no-empty-function
+  toggleColorMode: () => {},
+});
 
 export default function App() {
   const [mode, setMode] = React.useState<"light" | "dark">("dark");
