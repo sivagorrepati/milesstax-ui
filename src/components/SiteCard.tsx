@@ -84,7 +84,7 @@ const SiteCard = (props: SiteCardProps) => {
             return (
               <ListItem key={item.id} disablePadding>
                 <ListItemText disableTypography>
-                  <Typography fontSize={15} variant="body1" paragraph>
+                  <Typography fontSize={15} variant="body1">
                     {formatArticleTitleForDisplay(item)}
                     <Link
                       href={item.link}
