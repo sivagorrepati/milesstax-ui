@@ -1,0 +1,18 @@
+body {
+  font-family: "Roboto", "Helvetica", "Arial", "sans-serif";
+  line-height: 1.5;
+  margin: 0;
+}
+
+a:hover, a:visited {
+  text-decoration: none;
+  color: none;
+}
+
+.header-logo {
+  flex-grow: 1;
+}
+
+.card {
+  margin: 5%;
+}
