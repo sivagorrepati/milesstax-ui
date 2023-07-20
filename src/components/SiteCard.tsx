@@ -42,7 +42,7 @@ const SiteCard = (props: SiteCardProps) => {
     if (items && items.length > 0) {
       time_suffix = new Date(items[0].published).toLocaleString();
     }
-    return "Last updated at " + time_suffix;
+    return "Last published at " + time_suffix;
   };
 
   const formatArticleTitleForDisplay = (item: SiteArticle) => {
@@ -83,21 +83,21 @@ const SiteCard = (props: SiteCardProps) => {
           {filteredItems.map((item) => {
             return (
               <ListItem key={item.id} disablePadding>
-                <ListItemText>
-                  <Link
-                    href={item.link}
-                    target="_blank"
-                    underline="hover"
-                    color="inherit"
-                    rel="noreferrer"
-                    aria-label={name + "-" + item.title}
-                  >
-                    <Typography fontSize={15} variant="body1">
-                      {formatArticleTitleForDisplay(item)}
+                <Typography fontSize={15} variant="body1">
+                  <ListItemText disableTypography>
+                    {formatArticleTitleForDisplay(item)}
+                    <Link
+                      href={item.link}
+                      target="_blank"
+                      underline="hover"
+                      color="inherit"
+                      rel="noreferrer"
+                      aria-label={name + "-" + item.title}
+                    >
                       {item.title}
-                    </Typography>
-                  </Link>
-                </ListItemText>
+                    </Link>
+                  </ListItemText>
+                </Typography>
               </ListItem>
             );
           })}

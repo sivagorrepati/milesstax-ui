@@ -28,7 +28,7 @@ const Dashboard = () => {
 
   return (
     <div>
-      <Grid container spacing={2} rowSpacing={1}>
+      <Grid container spacing={1} rowSpacing={1}>
         {Object.keys(data).map((key) => {
           const value = data[key];
 
