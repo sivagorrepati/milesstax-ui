@@ -14,7 +14,7 @@ const Dashboard = () => {
 
   useEffect(() => {
     function fetchData() {
-      fetch("https://data.milesstax.com/")
+      fetch(import.meta.env.VITE_DATA_URL)
         .then((response) => response.json())
         // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
         .then((response) => setData(JSON.parse(JSON.stringify(response))))
@@ -26,7 +26,7 @@ const Dashboard = () => {
 
   return (
     <div>
-      <Grid container spacing={1} rowSpacing={1}>
+      <Grid container>
         {Object.keys(data).map((key) => {
           const value = data[key];
 
