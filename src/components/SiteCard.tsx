@@ -11,12 +11,13 @@ import {
   ListItemText,
   Typography,
 } from "@mui/material";
+import { isAfter, startOfDay } from "date-fns";
 
 export interface SiteArticle {
   id: string;
   title: string;
   link: string;
-  published: string;
+  published: number;
 }
 
 interface SiteCardProps {
@@ -29,29 +30,26 @@ interface SiteCardProps {
 
 const SiteCard = (props: SiteCardProps) => {
   const { name, title, link, items } = props;
-  const today = new Date();
+  const today = startOfDay(new Date());
 
   const filteredItems = items
     .sort((left, right) => {
-      return Date.parse(right.published) - Date.parse(left.published);
+      return right.published - left.published;
     })
-    .filter((_, index) => index < 10);
+    .filter(
+      (item, index) => isAfter(item.published * 1000, today) || index < 10
+    );
 
   const getLastUpdatedDate = (items: SiteArticle[]) => {
     let time_suffix = "Not available";
     if (items && items.length > 0) {
-      time_suffix = new Date(items[0].published).toLocaleString();
+      time_suffix = new Date(items[0].published * 1000).toLocaleString();
     }
     return "Last published at " + time_suffix;
   };
 
   const formatArticleTitleForDisplay = (item: SiteArticle) => {
-    const parsed_date = new Date(item.published);
-    if (
-      today.getDate() === parsed_date.getDate() &&
-      today.getMonth() === parsed_date.getMonth() &&
-      today.getFullYear() === parsed_date.getFullYear()
-    ) {
+    if (isAfter(item.published * 1000, today)) {
       return (
         <>
           <FontAwesomeIcon icon={faCalendarDay} />
