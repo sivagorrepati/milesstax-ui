@@ -58,8 +58,8 @@ const Disclosures = () => {
           7. Data Privacy:
         </Typography>
         We are committed to protecting user data and privacy. We do not collect
-        any user information other than required for webiste analyctics to
-        measure performance of platform.
+        any user information other than what is required for website analytics
+        to measure the performance of the platform.
         <Typography variant="h6" sx={{ marginTop: 2 }}>
           8. Advertising and Monetization:
         </Typography>
