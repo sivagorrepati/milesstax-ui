@@ -1,9 +1,9 @@
 import { faBarsStaggered, faSun } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { IconButton, Toolbar, Typography } from "@mui/material";
+import { IconButton, Link, Toolbar, Typography } from "@mui/material";
 import AppBar from "@mui/material/AppBar";
 import React from "react";
-import { ColorModeContext } from "../App";
+import { ColorModeContext } from "../Layout";
 
 const Header = () => {
   const colorMode = React.useContext(ColorModeContext);
@@ -16,11 +16,19 @@ const Header = () => {
       aria-label="header"
     >
       <Toolbar>
-        <IconButton size="large" edge="start" color="inherit" aria-label="logo">
+        <IconButton
+          size="large"
+          edge="start"
+          color="inherit"
+          aria-label="logo"
+          href="/"
+        >
           <FontAwesomeIcon icon={faBarsStaggered} />
         </IconButton>
         <Typography variant="h4" component="div" sx={{ flexGrow: 1 }}>
-          milesstax
+          <Link href="/" underline="none" color="inherit">
+            milesstax
+          </Link>
         </Typography>
         <IconButton
           size="large"

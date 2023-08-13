@@ -1,41 +1,27 @@
-import { CssBaseline, ThemeProvider, createTheme } from "@mui/material";
-import React from "react";
-import Dashboard from "./components/Dashboard";
-import Header from "./components/Header";
-
-export const ColorModeContext = React.createContext({
-  // eslint-disable-next-line @typescript-eslint/no-empty-function
-  toggleColorMode: () => {},
-});
+import { RouterProvider, createBrowserRouter } from "react-router-dom";
+import Dashboard from "./pages/dashboard/Dashboard";
+import Disclosures from "./pages/disclosures/Disclosures";
+import Error from "./pages/error/Error";
+import Layout from "./pages/layout/Layout";
 
 export default function App() {
-  const [mode, setMode] = React.useState<"light" | "dark">("dark");
-  const colorMode = React.useMemo(
-    () => ({
-      toggleColorMode: () => {
-        setMode((prevMode) => (prevMode === "light" ? "dark" : "light"));
-      },
-    }),
-    []
-  );
-
-  const theme = React.useMemo(
-    () =>
-      createTheme({
-        palette: {
-          mode,
+  const router = createBrowserRouter([
+    {
+      path: "/",
+      Component: Layout,
+      ErrorBoundary: Error,
+      children: [
+        {
+          index: true,
+          Component: Dashboard,
         },
-      }),
-    [mode]
-  );
+        {
+          path: "disclosures",
+          Component: Disclosures,
+        },
+      ],
+    },
+  ]);
 
-  return (
-    <ColorModeContext.Provider value={colorMode}>
-      <ThemeProvider theme={theme}>
-        <CssBaseline />
-        <Header />
-        <Dashboard />
-      </ThemeProvider>
-    </ColorModeContext.Provider>
-  );
+  return <RouterProvider router={router} />;
 }

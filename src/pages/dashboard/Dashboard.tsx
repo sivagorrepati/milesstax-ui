@@ -1,7 +1,7 @@
 import { Grid } from "@mui/material";
 import { compareDesc, max } from "date-fns";
 import { useEffect, useState } from "react";
-import SiteCard, { SiteArticle } from "./SiteCard";
+import SiteCard, { SiteArticle } from "./components/SiteCard";
 
 interface Data {
   version: string;
