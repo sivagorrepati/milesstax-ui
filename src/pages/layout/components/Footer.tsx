@@ -17,7 +17,7 @@ const Footer = () => {
       <Container maxWidth="lg" sx={{ padding: 2 }}>
         <Typography variant="body2" color="text.secondary" align="center">
           <Link
-            href="https://twitter.com/milesstax"
+            href="mailto:mail@milesstax.com"
             target="_blank"
             underline="hover"
             color="inherit"
