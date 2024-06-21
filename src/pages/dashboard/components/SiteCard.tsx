@@ -69,12 +69,6 @@ const SiteCard = (props: SiteCardProps) => {
         color="inherit"
         rel="noreferrer"
         aria-label={"Link to " + title}
-        onClick={() => {
-          gtag('event', 'click_header', {
-            'site': link
-          })
-          return true;
-        }}
       >
         <CardHeader
           title={title}
@@ -97,13 +91,6 @@ const SiteCard = (props: SiteCardProps) => {
                       color="inherit"
                       rel="noreferrer"
                       aria-label={name + "-" + item.title}
-                      onClick={() => {
-                        gtag('event', 'click_article', {
-                          'site': link,
-                          'article': item.link
-                        })
-                        return true;
-                      }}
                     >
                       {item.title}
                     </Link>
